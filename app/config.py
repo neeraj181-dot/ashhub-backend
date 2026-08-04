@@ -33,6 +33,22 @@ class Settings:
     )
     GITHUB_CLIENT_ID: str = os.getenv("GITHUB_CLIENT_ID", "mock_github_client_id")
     GITHUB_CLIENT_SECRET: str = os.getenv("GITHUB_CLIENT_SECRET", "mock_github_client_secret")
+    GITHUB_CALLBACK_URL: str = os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/github/callback")
+    GITHUB_REDIRECT_URI: str = os.getenv("GITHUB_REDIRECT_URI", os.getenv("GITHUB_CALLBACK_URL", "http://localhost:8000/github/callback"))
+
+    # Cloud Provider Settings
+    VERCEL_TOKEN: str = os.getenv("VERCEL_TOKEN", "mock_vercel_token")
+    VERCEL_API: str = os.getenv("VERCEL_API", "https://api.vercel.com")
+
+    RENDER_API_KEY: str = os.getenv("RENDER_API_KEY", "mock_render_api_key")
+    RENDER_API: str = os.getenv("RENDER_API", "https://api.render.com/v1")
+
+    OCI_TENANCY: str = os.getenv("OCI_TENANCY", "mock_oci_tenancy_ocid")
+    OCI_USER: str = os.getenv("OCI_USER", "mock_oci_user_ocid")
+    OCI_FINGERPRINT: str = os.getenv("OCI_FINGERPRINT", "mock_oci_fingerprint")
+    OCI_KEY_FILE: str = os.getenv("OCI_KEY_FILE", "")
+    OCI_PRIVATE_KEY: str = os.getenv("OCI_PRIVATE_KEY", "")
+    OCI_REGION: str = os.getenv("OCI_REGION", "us-ashburn-1")
 
 
 settings = Settings()

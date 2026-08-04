@@ -46,3 +46,22 @@ def decrypt_env_vars(encrypted_str: str) -> dict[str, str]:
         return json.loads(decrypted_bytes.decode())
     except Exception:
         return {}
+
+
+def encrypt_token(token: str | None) -> str | None:
+    """Encrypt a plaintext string token."""
+    if not token:
+        return None
+    encrypted_bytes = _fernet.encrypt(token.encode())
+    return encrypted_bytes.decode()
+
+
+def decrypt_token(encrypted_str: str | None) -> str | None:
+    """Decrypt an encrypted token string back to plaintext."""
+    if not encrypted_str:
+        return None
+    try:
+        decrypted_bytes = _fernet.decrypt(encrypted_str.encode())
+        return decrypted_bytes.decode()
+    except Exception:
+        return encrypted_str
